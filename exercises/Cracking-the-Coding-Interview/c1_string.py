@@ -49,3 +49,22 @@ def check_is_permutation(first_string, second_string):
     return sorted(first_string) == sorted(second_string)
 
 
+def check_is_permutation_optimal(first_string, second_string):
+    if len(first_string) != len(second_string):
+        return False
+
+    char_set = [0 for i in range(128)]
+
+    for char in first_string:
+        val = ord(char)
+        char_set[val] += 1
+
+    for char in first_string:
+        val = ord(char)
+        char_set[val] -= 1
+        if char_set[val] < 0:
+            return False
+
+    return True
+
+
