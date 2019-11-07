@@ -90,3 +90,17 @@ def urlify(string, length):
     return ''.join(array_string)
 
 
+def is_permutation_of_palindrome(string):
+    count_odd = 0
+    table = [0 for i in range(128)]
+
+    for char in string:
+        value = ord(char)
+        table[value] += 1
+        if table[value] % 2 == 1:
+            count_odd += 1
+        else:
+            count_odd -= 1
+    return count_odd <= 1
+
+
