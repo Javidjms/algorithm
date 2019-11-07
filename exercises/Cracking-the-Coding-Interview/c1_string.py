@@ -34,3 +34,12 @@ def is_unique_chars_with_hash_map(string):
     return True
 
 
+def is_unique_chars_with_sort(string):
+    sorted_string = sorted(string)
+
+    for i in range(1, len(string)):
+        if sorted_string[i-1] == sorted_string[i]:
+            return False
+    return True
+
+
