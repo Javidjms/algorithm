@@ -104,3 +104,38 @@ def is_permutation_of_palindrome(string):
     return count_odd <= 1
 
 
+def one_edit_away(first_string, second_string):
+    if len(first_string) == len(second_string):
+        return one_edit_replace(first_string, second_string)
+    elif (len(first_string) + 1) == len(second_string):
+        return one_edit_insert(first_string, second_string)
+    elif first_string == (len(second_string) + 1):
+        return one_edit_insert(second_string, first_string)
+    return False
+
+
+def one_edit_replace(first_string, second_string):
+    found_difference = False
+    for index in range(0, len(first_string)):
+        if first_string[index] != second_string[index]:
+            if found_difference:
+                return False
+            found_difference = True
+    return True
+
+
+def one_edit_insert(first_string, second_string):
+    index1 = 0
+    index2 = 0
+
+    while index1 < len(first_string) and index2 < len(second_string):
+        if first_string[index1] != second_string[index2]:
+            if index1 != index2:
+                return False
+            index2 += 1
+        else:
+            index1 += 1
+            index2 += 1
+    return True
+
+
