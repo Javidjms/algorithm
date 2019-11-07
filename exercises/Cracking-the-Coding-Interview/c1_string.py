@@ -68,3 +68,25 @@ def check_is_permutation_optimal(first_string, second_string):
     return True
 
 
+def urlify(string, length):
+    array_string = list(string)
+    sparse_count = 0
+
+    for i in range(length):
+        char = array_string[i]
+        if char == ' ':
+            sparse_count += 1
+    index = length + sparse_count * 2
+
+    for i in range(length-1, -1, -1):
+        char = array_string[i]
+        if char == ' ':
+            array_string[index-3:index] = '%20'
+            index -= 3
+        else:
+            array_string[index-1] = array_string[i]
+            index -= 1
+
+    return ''.join(array_string)
+
+
