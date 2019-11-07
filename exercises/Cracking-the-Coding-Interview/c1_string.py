@@ -43,3 +43,9 @@ def is_unique_chars_with_sort(string):
     return True
 
 
+def check_is_permutation(first_string, second_string):
+    if len(first_string) != len(second_string):
+        return False
+    return sorted(first_string) == sorted(second_string)
+
+
