@@ -156,3 +156,17 @@ def string_compression(string):
     return min(''.join(array_string), ''.join(compressed), key=len)
 
 
+def rotate_matrix(matrix):
+    n = len(matrix)
+    for layer in range(n // 2):
+        first, last = layer, n - layer - 1
+        for i in range(first, last):
+            top = matrix[layer][i]
+
+            matrix[layer][i] = matrix[-i - 1][layer]
+            matrix[-i - 1][layer] = matrix[-layer - 1][-i - 1]
+            matrix[-layer - 1][-i - 1] = matrix[i][- layer - 1]
+            matrix[i][- layer - 1] = top
+    return matrix
+
+
