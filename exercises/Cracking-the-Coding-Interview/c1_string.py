@@ -139,3 +139,20 @@ def one_edit_insert(first_string, second_string):
     return True
 
 
+def string_compression(string):
+    counter = 0
+    compressed = []
+    array_string = list(string)
+
+    for i in range(len(array_string)):
+        if i != 0 and array_string[i] != array_string[i - 1]:
+            compressed.append(array_string[i - 1] + str(counter))
+            counter = 0
+        counter += 1
+
+    if len(array_string):
+        compressed.append(array_string[-1] + str(counter))
+
+    return min(''.join(array_string), ''.join(compressed), key=len)
+
+
