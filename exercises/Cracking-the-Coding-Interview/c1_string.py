@@ -201,3 +201,11 @@ def nullify_col(matrix, col):
         matrix[i][col] = 0
 
 
+def is_substring(string, sub):
+    return string.find(sub) != -1
+
+
+def string_rotation(first_string, second_string):
+    if len(first_string) == len(second_string) != 0:
+        return is_substring(first_string + first_string, second_string)
+    return False
