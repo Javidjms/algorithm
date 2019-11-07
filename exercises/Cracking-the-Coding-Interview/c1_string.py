@@ -23,3 +23,14 @@ def is_unique_chars(string):
     return True
 
 
+def is_unique_chars_with_hash_map(string):
+    char_dict = {}
+
+    for char in string:
+        if char in char_dict:
+            return False
+        char_dict[char] = True
+
+    return True
+
+
